@@ -2,17 +2,16 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const productList = require("../db/products-data.json");
 
 //************** Read All Products */
 router.get("/get-all-products", (req, res) => {
-  const products = require("../db/products-data.json");
   return res.json(products);
 });
 
 //************* Read chosen Product  */
-router.get("/get-product-id/:productId", (req, res) => {
-  const products = require("../db/products-data.json");
-  const product = products.find((x) => x.id == req.params.productId);
+router.get("/get-product-id/:id", (req, res) => {
+  const product = productList.find((x) => x.id == req.params.id);
   if (!product) {
     return res.status(404).send("Product Not Found!");
   }
@@ -30,24 +29,22 @@ router.post("/newProduct", (req, res) => {
     brand: req.body.brand,
     category: req.body.category,
   };
-  const products = require("../db/products-data.json");
-  products.push(newProduct);
+  productList.push(newProduct);
 
   try {
     fs.writeFileSync(
       path.join(__dirname, "../db/products-data.json"),
-      JSON.stringify(products)
+      JSON.stringify(productList)
     );
   } catch (err) {
     return res.status(400).send("somthing went wrong");
   }
-  res.json(products);
+  res.json(productList);
 });
 
 //********* Update Chosen Product */
-router.put("/update-products/:productId", (req, res) => {
-  const products = require("../db/products-data.json");
-  const product = products.find((x) => x.id == req.params.productId);
+router.put("/update-products/:id", (req, res) => {
+  const product = productList.find((x) => x.id == req.params.id);
   product.price = req.body.price;
   try {
     fs.writeFileSync(
@@ -57,23 +54,23 @@ router.put("/update-products/:productId", (req, res) => {
   } catch (err) {
     return res.status(400).send("somthing went wrong");
   }
-  res.json(products);
+  res.json(productList);
 });
 
 //********** Delete Chosen Product */
 router.delete("/deleteProducts", (req, res) => {
-  const productsTemp = products.filter((x) => x.id != req.params.productId);
+  const chosen = products.filter((x) => x.id != req.params.productId);
 
   try {
     fs.writeFileSync(
       path.join(__dirname, "../db/product.json"),
-      JSON.stringify(productsTemp)
+      JSON.stringify(chosen)
     );
   } catch (err) {
     console.log(err);
     return res.status(400).send("Try again later!");
   }
 
-  res.send("remove product");
+  res.status(200).send("remove product");
 });
 module.exports = router;
