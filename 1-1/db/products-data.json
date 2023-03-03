@@ -292,5 +292,14 @@
         "rating": 4.69,
         "brand": "Apple",
         "category": "smartphones"
+    },
+    {},
+    {
+        "id": 35,
+        "title": "glx",
+        "price": 549,
+        "rating": 4.69,
+        "brand": "Apple",
+        "category": "smartphones"
     }
 ]

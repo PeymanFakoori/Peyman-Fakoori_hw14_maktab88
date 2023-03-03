@@ -6,7 +6,7 @@ const productList = require("../db/products-data.json");
 
 //************** Read All Products */
 router.get("/get-all-products", (req, res) => {
-  return res.json(products);
+  return res.json(productList);
 });
 
 //************* Read chosen Product  */
@@ -58,7 +58,7 @@ router.put("/update-products/:id", (req, res) => {
 });
 
 //********** Delete Chosen Product */
-router.delete("/deleteProducts", (req, res) => {
+router.delete("/deleteProducts/:id", (req, res) => {
   const chosen = products.filter((x) => x.id != req.params.productId);
 
   try {
