@@ -1,9 +1,16 @@
 [
-  {
-    "firsname": "john",
-    "lastname": "smith",
-    "username": "john_smith",
-    "password": "user1234",
-    "gender": "male"
-  }
+    {
+        "firsname": "john",
+        "lastname": "smith",
+        "username": "john_smith",
+        "password": "user1234",
+        "gender": "male"
+    },
+    {
+        "firstname": "Payman",
+        "lastname": "fakoori",
+        "username": "peyman123",
+        "password": "123",
+        "gender": "Male"
+    }
 ]

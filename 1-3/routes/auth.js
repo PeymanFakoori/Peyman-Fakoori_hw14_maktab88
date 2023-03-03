@@ -22,4 +22,16 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../views/login.html"));
 });
 
+router.post("/login", (req, res) => {
+  let newUserUsername = data.find((x) => x.username == req.body.username);
+  let newUserPassword = data.find((x) => x.password == req.body.password);
+  if (!newUserUsername) {
+    return res.send("user not found");
+  }
+  if (!newUserPassword) {
+    return res.send("password is wrong");
+  } else {
+    res.send("ok");
+  }
+});
 module.exports = router;
