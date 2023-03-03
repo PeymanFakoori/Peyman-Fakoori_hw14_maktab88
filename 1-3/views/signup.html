@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up page</title>
+</head>
+
+<body>
+
+    <form action="http://localhost:8000/auth/signup?" method="post">
+        <h1>Sign Up</h1>
+        <div>
+            <div>
+                <input type="text" name="firstname" placeholder="Please Enter First Name">
+            </div>
+            <div> <input type="text" name="lastname" placeholder="Please Enter Last Name"></div>
+            <div> <input type="text" name="username" placeholder="Please Enter user name"></div>
+
+            <div> <input type="password" name="password" placeholder="Please Enter Password"></div>
+        </div>
+        <div>
+            <select name="gender" id="select">
+                <option>choose One</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+        <div>
+            <input id="button" type="submit" value="SIGN UP" />
+        </div>
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</body>
+
+</html>
