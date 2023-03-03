@@ -23,15 +23,16 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  let newUserUsername = data.find((x) => x.username == req.body.username);
-  let newUserPassword = data.find((x) => x.password == req.body.password);
-  if (!newUserUsername) {
+  let userUsername = data.find((x) => x.username == req.body.username);
+  let userPassword = data.find((x) => x.password == req.body.password);
+  if (!userUsername) {
     return res.send("user not found");
   }
-  if (!newUserPassword) {
+  if (!userPassword) {
     return res.send("password is wrong");
   } else {
     res.send("ok");
+    // res.status(200).send(data);
   }
 });
 module.exports = router;
